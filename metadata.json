@@ -1,0 +1,8 @@
+{
+  "name": "Ponnusamy Dynamics Website",
+  "description": "Independent software and systems R\u0026D lab developing reliable systems, software tooling, and modern tech architectures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

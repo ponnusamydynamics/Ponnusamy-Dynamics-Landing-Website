@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "Project": {
+      "title": "ProjectItem",
+      "description": "Showcase items posted by lab admin across Collaborations, Launches, and Docs",
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "Category: 'collaboration' | 'launch' | 'doc'",
+          "enum": ["collaboration", "launch", "doc"]
+        },
+        "projectId": { "type": "string", "description": "Identifier like CLB-01, LNCH-01, or DOC-01" },
+        "title": { "type": "string", "description": "Title of the project, collaboration, or document" },
+        "status": { "type": "string", "description": "Launch Stage: Projected, In Dev, Beta, Published (primarily for launches)" },
+        "shortDesc": { "type": "string", "description": "Short description for preview cards" },
+        "readme": { "type": "string", "description": "Rich GitHub-style Markdown documentation or paper text" },
+        "clientName": { "type": "string", "description": "Company, organization, or club name for collaborations" },
+        "clientRole": { "type": "string", "description": "Role or contribution context for collaborations" },
+        "clientPeriod": { "type": "string", "description": "Timeline or year of collaboration" },
+        "docType": { "type": "string", "description": "Document type: Research Paper, Technical Spec, Whitepaper, RFC, etc." },
+        "docReadingTime": { "type": "string", "description": "Estimated reading duration or page count" },
+        "docDate": { "type": "string", "description": "Date or version of the document" },
+        "docContext": { "type": "string", "description": "Context details, research domain, or methodology summary" },
+        "externalUrl": { "type": "string", "description": "External publication link, PDF link, or preprint" },
+        "githubUrl": { "type": "string", "description": "Source code repository URL" },
+        "liveUrl": { "type": "string", "description": "Live production, client demo, or deployed documentation URL" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Technology and domain tags" },
+        "order": { "type": "number", "description": "Display sequence order" },
+        "published": { "type": "boolean", "description": "Whether item is visible to public" },
+        "isRestricted": { "type": "boolean", "description": "If true, card is visible to public but specifications and details are redacted; admin can view full details" },
+        "isClassified": { "type": "boolean", "description": "If true, completely hidden from public (does not exist to non-admin); only visible to admin" },
+        "authorEmail": { "type": "string", "description": "Creator email" },
+        "icon": {
+          "type": "object",
+          "description": "Optional custom shaped icon/emblem for the item",
+          "properties": {
+            "data": { "type": "string" },
+            "shape": { "type": "string" },
+            "size": { "type": "string" },
+            "fit": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "string", "description": "ISO timestamp" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["category", "projectId", "title", "shortDesc", "published"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of software launches, collaborations/clients, and research docs"
+    }
+  }
+}
